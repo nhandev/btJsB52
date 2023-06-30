@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Bài tập mảng</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+      crossorigin="anonymous"
+    />
+    <!-- FontAwesome 6.2.0 CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- (Optional) Use CSS or JS implementation -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/js/all.min.js"
+      integrity="sha512-naukR7I+Nk6gp7p5TMA4ycgfxaZBJ7MO5iC3Fp6ySQyKFHOGfpkSZkYVWV5R7u7cfAicxanwYQ5D1e17EfJcMA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <link rel="shortcut icon" href="./img/favicon.jpeg" type="image/x-icon" />
+    <!-- my css  -->
+    <link rel="stylesheet" href="./css/index.css" />
+  </head>
+  <!-- Giao diện gần giống như các bài js trước đó nên tái sử dụng là phần lớn,-->
+  <body>
+    <main>
+      <div class="container py-5">
+        <div class="card w-75 mx-auto">
+          <div class="bg-holder d-none d-lg-block bg-card"></div>
+          <div class="bg_card position-relative p-0">
+            <div class="row p-0">
+              <div
+                class="col-12 col-md-8 col-lg-9 col-xl-10 tab-content mx-auto"
+                id="v-pills-tabContent"
+              >
+                <div
+                  class="tab-pane fade show active"
+                  id="bai1"
+                  role="tabpanel"
+                  aria-labelledby="v-pills-home-tab"
+                >
+                  <form class="row gy-3 align-items-center py-3">
+                    <div class="col-12 col-lg-6">
+                      <input
+                        type="number"
+                        class="form-control form_ip"
+                        id="number"
+                        placeholder="Nhập số n"
+                      />
+                    </div>
+                    <div class="col-12 col-lg-6">
+                      <button
+                        class="btn bt_feature me-1 mb-1"
+                        type="button"
+                        onclick="showNumber()"
+                      >
+                        Thêm số
+                      </button>
+                      <!-- Thêm button xóa só cho tiện nếu có nhu cầu xóa,theo như web mẫu thì nếu muốn xóa 1 số thì phải reload từ đầu -->
+                      <button
+                        class="btn bt_feature me-1 mb-1"
+                        type="button"
+                        onclick="removeNumber()"
+                      >
+                        Xóa số
+                      </button>
+                    </div>
+                    <div class="alert alert-success" role="alert">
+                      ✔️<span id="result"></span>
+                    </div>
+                  </form>
+                  <!-- dùng Accordion của bs5 để tạo giao diện popup -->
+                  <div class="accordion mb-4" id="accordionExample">
+                    <!-- bài 1  -->
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="headingOne">
+                        <button
+                          class="accordion-button collapsed"
+                          type="button"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#collapseOne"
+                          aria-expanded="false"
+                          aria-controls="collapseOne"
+                        >
+                          1️⃣ Tổng số dương
+                        </button>
+                      </h2>
+                      <div
+                        id="collapseOne"
+                        class="accordion-collapse collapse"
+                        aria-labelledby="headingOne"
+                        data-bs-parent="#accordionExample"
+                      >
+                        <div class="accordion-body">
+                          <div class="note callout callout-info">
+                            <p class="mb-0">
+                              💡<b>Gợi ý:</b> Làm tương tự demo đã học trên lớp
+                            </p>
+                          </div>
+                          <form class="row gy-3 align-items-center px-2">
+                            <div class="col-12">
+                              <button
+                                onclick="sumPositive()"
+                                class="btn bt_feature me-1 mb-1"
+                                type="button"
+                              >
+                                Tính tổng
+                              </button>
+                            </div>
+                            <div class="alert alert-success" role="alert">
+                              ✔️<span id="sum"></span>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- bài 2 -->
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="headingTwo">
+                        <button
+                          class="accordion-button collapsed"
+                          type="button"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#collapseTwo"
+                          aria-expanded="false"
+                          aria-controls="collapseTwo"
+                        >
+                          2️⃣ Đếm số dương
+                        </button>
+                      </h2>
+                      <div
+                        id="collapseTwo"
+                        class="accordion-collapse collapse"
+                        aria-labelledby="headingTwo"
+                        data-bs-parent="#accordionExample"
+                      >
+                        <div class="accordion-body">
+                          <div class="note callout callout-info">
+                            <p class="mb-0">
+                              💡<b>Gợi ý:</b> Làm tương tự demo đã học trên lớp
+                            </p>
+                          </div>
+                          <form class="row gy-3 align-items-center px-2">
+                            <div class="col-12">
+                              <button
+                                onclick="countPositive()"
+                                class="btn bt_feature me-1 mb-1"
+                                type="button"
+                              >
+                                Đếm số
+                              </button>
+                            </div>
+                            <div class="alert alert-success" role="alert">
+                              ✔️<span id="count"></span>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- bài 3 -->
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="headingTwo">
+                        <button
+                          class="accordion-button collapsed"
+                          type="button"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#collapseThree"
+                          aria-expanded="false"
+                          aria-controls="collapseTwo"
+                        >
+                          3️⃣ Tìm số nhỏ nhất
+                        </button>
+                      </h2>
+                      <div
+                        id="collapseThree"
+                        class="accordion-collapse collapse"
+                        aria-labelledby="headingTwo"
+                        data-bs-parent="#accordionExample"
+                      >
+                        <div class="accordion-body">
+                          <div class="note callout callout-info">
+                            <p class="mb-0">
+                              💡<b>Gợi ý:</b> Làm tương tự demo Sinh Vien đã học
+                              trên lớp
+                            </p>
+                          </div>
+                          <form class="row gy-3 align-items-center px-2">
+                            <div class="col-12">
+                              <button
+                                class="btn bt_feature me-1 mb-1"
+                                type="button"
+                                onclick="smallestNumber()"
+                              >
+                                Tìm số nhỏ nhất
+                              </button>
+                            </div>
+                            <div class="alert alert-success" role="alert">
+                              ✔️<span id="smNumber"></span>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- bài 4 -->
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="headingTwo">
+                        <button
+                          class="accordion-button collapsed"
+                          type="button"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#collapseFour"
+                          aria-expanded="false"
+                          aria-controls="collapseTwo"
+                        >
+                          4️⃣ Tìm số dương nhỏ nhất
+                        </button>
+                      </h2>
+                      <div
+                        id="collapseFour"
+                        class="accordion-collapse collapse"
+                        aria-labelledby="headingTwo"
+                        data-bs-parent="#accordionExample"
+                      >
+                        <div class="accordion-body">
+                          <div class="note callout callout-info">
+                            <p class="mb-0">💡<b>Gợi ý:</b></p>
+                            <details>
+                              <summary>Mở rộng để xem thêm</summary>
+                              <ul>
+                                <li>
+                                  Tạo thêm 1 mảng mới dùng để chứa các số dương
+                                </li>
+                                <li>
+                                  Dùng vòng lặp để lấy các số dương từ mảng cũ
+                                  và lưu vào trong mảng mới
+                                </li>
+                                <li>
+                                  Kiểm tra mảng mới có phần tử hay không. Nếu có
+                                  thì bắt đầu đi tìm giá trị dương nhỏ nhất.
+                                  Ngược lại thì thông báo không có số dương
+                                </li>
+                              </ul>
+                            </details>
+                          </div>
+                          <form class="row gy-3 align-items-center px-2">
+                            <div class="col-12">
+                              <button
+                                class="btn bt_feature me-1 mb-1"
+                                type="button"
+                                onclick="smallestPositive()"
+                              >
+                                Tìm số dương nhỏ nhất
+                              </button>
+                            </div>
+                            <div class="alert alert-success" role="alert">
+                              ✔️<span id="smPositive"></span>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- bài 5 -->
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="headingTwo">
+                        <button
+                          class="accordion-button collapsed"
+                          type="button"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#collapseFive"
+                          aria-expanded="false"
+                          aria-controls="collapseTwo"
+                        >
+                          5️⃣ Tìm số chẵn cuối cùng
+                        </button>
+                      </h2>
+                      <div
+                        id="collapseFive"
+                        class="accordion-collapse collapse"
+                        aria-labelledby="headingTwo"
+                        data-bs-parent="#accordionExample"
+                      >
+                        <div class="accordion-body">
+                          <div class="note callout callout-info">
+                            <p class="mb-0">💡<b>Gợi ý:</b></p>
+                            <details>
+                              <summary>Mở rộng để xem thêm</summary>
+                              <ul>
+                                <li>Tạo 1 biến chứa số chẵn cuối cùng</li>
+                                <li>
+                                  Dùng vòng lặp duyệt mảng và kiểm tra số chẵn.
+                                  Nếu là số chẵn thì gán vào biến.
+                                </li>
+                              </ul>
+                            </details>
+                          </div>
+                          <form class="row gy-3 align-items-center px-2">
+                            <div class="col-12">
+                              <button
+                                class="btn bt_feature me-1 mb-1"
+                                type="button"
+                                onclick=" lastEven()"
+                              >
+                                Tìm số chẵn
+                              </button>
+                            </div>
+                            <div class="alert alert-success" role="alert">
+                              ✔️<span id="numberEven"></span>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- bài 6 -->
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="headingTwo">
+                        <button
+                          class="accordion-button collapsed"
+                          type="button"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#collapseSix"
+                          aria-expanded="false"
+                          aria-controls="collapseTwo"
+                        >
+                          6️⃣ Đổi chỗ
+                        </button>
+                      </h2>
+                      <div
+                        id="collapseSix"
+                        class="accordion-collapse collapse"
+                        aria-labelledby="headingTwo"
+                        data-bs-parent="#accordionExample"
+                      >
+                        <div class="accordion-body">
+                          <div class="note callout callout-info">
+                            <p class="mb-0">💡<b>Gợi ý:</b></p>
+                            <details>
+                              <summary>Mở rộng để xem thêm</summary>
+                              <ul>
+                                <li>
+                                  Vị trí là index của phần tử trong mảng. <br />
+                                  Để gán giá trị vào 1 vị trí(index) trong mảng
+                                  => array[index] = giá trị;
+                                </li>
+                                <li>
+                                  Tạo 1 biến tạm, gán giá trị của phần tử ở vị
+                                  trí 1 vào biến tạm
+                                </li>
+                                <li>
+                                  Gán giá trị của phần tử ở vị trí 2 vào vị trí
+                                  1
+                                </li>
+                                <li>Gán giá trị biến tạm vào vị trí 2</li>
+                              </ul>
+                            </details>
+                          </div>
+                          <form class="row gy-3 align-items-center px-2">
+                            <div class="col-12 col-lg-6">
+                              <input
+                                type="number"
+                                class="form-control form_ip"
+                                id="index1"
+                                placeholder="Nhập số vị trí 1"
+                              />
+                            </div>
+                            <div class="col-12 col-lg-6">
+                              <input
+                                type="number"
+                                class="form-control form_ip"
+                                id="index2"
+                                placeholder="Nhập số vị trí 2"
+                              />
+                            </div>
+                            <div class="col-12">
+                              <button
+                                class="btn bt_feature me-1 mb-1"
+                                type="button"
+                                onclick="changePlace()"
+                              >
+                                Đổi chỗ
+                              </button>
+                            </div>
+                            <div class="alert alert-success" role="alert">
+                              ✔️<span id="place"></span>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- bài 7 -->
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="headingTwo">
+                        <button
+                          class="accordion-button collapsed"
+                          type="button"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#collapseSev"
+                          aria-expanded="false"
+                          aria-controls="collapseTwo"
+                        >
+                          7️⃣ Sắp xếp tăng dần
+                        </button>
+                      </h2>
+                      <div
+                        id="collapseSev"
+                        class="accordion-collapse collapse"
+                        aria-labelledby="headingTwo"
+                        data-bs-parent="#accordionExample"
+                      >
+                        <div class="accordion-body">
+                          <div class="note callout callout-info">
+                            <p class="mb-0">
+                              💡<b>Gợi ý: </b> Làm tương tự demo Sinh Vien đã
+                              học trên lớp
+                            </p>
+                          </div>
+                          <form class="row gy-3 align-items-center px-2">
+                            <div class="col-12">
+                              <button
+                                class="btn bt_feature me-1 mb-1"
+                                type="button"
+                                onclick="sort()"
+                              >
+                                Sắp xếp
+                              </button>
+                            </div>
+                            <div class="alert alert-success" role="alert">
+                              ✔️<span id="sortAscending"></span>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- bài 8 -->
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="headingTwo">
+                        <button
+                          class="accordion-button collapsed"
+                          type="button"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#collapseE"
+                          aria-expanded="false"
+                          aria-controls="collapseTwo"
+                        >
+                          8️⃣ Tìm số nguyên tố đầu tiên
+                        </button>
+                      </h2>
+                      <div
+                        id="collapseE"
+                        class="accordion-collapse collapse"
+                        aria-labelledby="headingTwo"
+                        data-bs-parent="#accordionExample"
+                      >
+                        <div class="accordion-body">
+                          <div class="note callout callout-info">
+                            <p class="mb-0">💡<b>Gợi ý: </b></p>
+                            <ul>
+                              <li>
+                                Khi tìm thấy số nguyên tố đầu tiên thì dùng lệnh
+                                dừng vòng lặp (break) để không duyệt những số
+                                tiếp theo trong mảng
+                              </li>
+                            </ul>
+                          </div>
+                          <form class="row gy-3 align-items-center px-2">
+                            <div class="col-12">
+                              <button
+                                class="btn bt_feature me-1 mb-1"
+                                type="button"
+                                onclick="fisrtPrime()"
+                              >
+                                Tìm số nguyên tố
+                              </button>
+                            </div>
+                            <div class="alert alert-success" role="alert">
+                              ✔️<span id="prime"></span>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- bài 9 -->
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="headingTwo">
+                        <button
+                          class="accordion-button collapsed"
+                          type="button"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#collapseNine"
+                          aria-expanded="false"
+                          aria-controls="collapseTwo"
+                        >
+                          9️⃣ Đếm số nguyên
+                        </button>
+                      </h2>
+                      <div
+                        id="collapseNine"
+                        class="accordion-collapse collapse"
+                        aria-labelledby="headingTwo"
+                        data-bs-parent="#accordionExample"
+                      >
+                        <div class="accordion-body">
+                          <div class="note callout callout-info">
+                            <p class="mb-0">💡<b>Gợi ý: </b></p>
+                            <ul>
+                              <li>
+                                Sử dụng
+                                <a
+                                  href="https://www.w3schools.com/jsref/jsref_isinteger.asp"
+                                  target="_blank"
+                                  >Number.isInteger</a
+                                >
+                                để kiểm tra số nguyên
+                              </li>
+                            </ul>
+                          </div>
+                          <form class="row gy-3 align-items-center py-3">
+                            <div class="col-12 col-lg-6">
+                              <input
+                                type="number"
+                                class="form-control form_ip"
+                                id="number2"
+                                placeholder="Nhập số"
+                              />
+                            </div>
+                            <div class="col-12 col-lg-6">
+                              <button
+                                class="btn bt_feature me-1 mb-1"
+                                type="button"
+                                onclick="showNumber2()"
+                              >
+                                Thêm số
+                              </button>
+                            </div>
+                            <div class="alert alert-success" role="alert">
+                              ✔️<span id="result2"></span>
+                            </div>
+                            <div class="col-12 col-lg-6">
+                              <button
+                                class="btn bt_feature me-1 mb-1"
+                                type="button"
+                                onclick="countInteger()"
+                              >
+                                Đếm số nguyên
+                              </button>
+                            </div>
+                            <div class="alert alert-success" role="alert">
+                              ✔️<span id="integer"></span>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- bài 10 -->
+                    <div class="accordion-item">
+                      <h2 class="accordion-header" id="headingTwo">
+                        <button
+                          class="accordion-button collapsed"
+                          type="button"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#collapseTen"
+                          aria-expanded="false"
+                          aria-controls="collapseTwo"
+                        >
+                          🔟 So sánh số lượng số âm và dương
+                        </button>
+                      </h2>
+                      <div
+                        id="collapseTen"
+                        class="accordion-collapse collapse"
+                        aria-labelledby="headingTwo"
+                        data-bs-parent="#accordionExample"
+                      >
+                        <div class="accordion-body">
+                          <div class="note callout callout-info">
+                            <p class="mb-0">💡<b>Gợi ý: </b></p>
+                            <ul>
+                              <li>
+                                Đếm số lượng sô âm và số dương. Sau đó so sánh
+                                số lượng của 2 loại
+                              </li>
+                            </ul>
+                          </div>
+                          <form class="row gy-3 align-items-center px-2">
+                            <div class="col-12">
+                              <button
+                                class="btn bt_feature me-1 mb-1"
+                                type="button"
+                                onclick="compareQuantity()"
+                              >
+                                So sánh
+                              </button>
+                            </div>
+                            <div class="alert alert-success" role="alert">
+                              ✔️<span id="compare"></span>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Bootstrap JavaScript Libraries -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+      integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+      crossorigin="anonymous"
+    ></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+      integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./js/index.js"></script>
+  </body>
+</html>
